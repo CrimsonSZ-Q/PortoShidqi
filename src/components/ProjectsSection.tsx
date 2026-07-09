@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Github, X, Database, Terminal, GitFork, CheckCircle } from "lucide-react";
+import { Github, X, Database, Terminal, GitFork, CheckCircle, ExternalLink } from "lucide-react";
 
 interface Project {
   id: number;
@@ -13,6 +13,7 @@ interface Project {
   architecture: string;
   tags: string[];
   githubUrl: string;
+  demoUrl?: string;
   detailsUrl?: string;
 }
 
@@ -42,6 +43,18 @@ export default function ProjectsSection() {
       architecture: "API for Shopping Cart.",
       tags: ["Go"],
       githubUrl: "https://github.com/CrimsonSZ-Q/ShoppingCartAPI",
+    },
+    {
+      id: 3,
+      title: "Kebab Ardoga Web",
+      category: "Web Application",
+      problem: "Need website for selling kebab and other foods.",
+      solution: "Create website for Kebab Ardoga.",
+      impact: "Successfully created a website for Kebab Ardoga.",
+      architecture: "Website for Kebab Ardoga.",
+      tags: ["HTML", "CSS", "JavaScript"],
+      githubUrl: "https://github.com/CrimsonSZ-Q/KebabArdogaWeb",
+      demoUrl: "https://crimsonsz-q.github.io/KebabArdogaWeb/",
     },
   ];
 
@@ -125,22 +138,41 @@ export default function ProjectsSection() {
                   ))}
                 </div>
 
-                <div className="flex items-center gap-3 pt-2 border-t border-zinc-800/80">
+                <div className="flex items-center gap-2 pt-2 border-t border-zinc-800/80">
                   <button
                     onClick={() => setSelectedProject(project)}
-                    className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-lg font-mono text-xs font-semibold text-zinc-350 bg-zinc-800 hover:bg-zinc-700 hover:text-white transition-colors"
+                    className="flex-1 inline-flex items-center justify-center gap-1 px-3 py-2 rounded-lg font-mono text-xs font-semibold text-zinc-350 bg-zinc-800 hover:bg-zinc-700 hover:text-white transition-colors"
                   >
-                    View Details
+                    Details
                   </button>
                   <a
                     href={project.githubUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-lg border border-zinc-800 hover:border-zinc-700 bg-zinc-900 text-zinc-400 hover:text-white transition-all font-mono text-xs"
+                    className="inline-flex items-center justify-center gap-1 px-3 py-2 rounded-lg border border-zinc-800 hover:border-zinc-700 bg-zinc-900 text-zinc-400 hover:text-white transition-all font-mono text-xs"
                   >
                     <Github className="w-3.5 h-3.5" />
                     GitHub
                   </a>
+                  {project.demoUrl ? (
+                    <a
+                      href={project.demoUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center justify-center gap-1 px-3 py-2 rounded-lg border border-brand-emerald/30 hover:border-brand-emerald bg-brand-emerald/5 text-brand-emerald hover:text-white hover:bg-brand-emerald/15 transition-all font-mono text-xs"
+                    >
+                      <ExternalLink className="w-3.5 h-3.5" />
+                      Demo
+                    </a>
+                  ) : (
+                    <button
+                      disabled
+                      className="inline-flex items-center justify-center gap-1 px-3 py-2 rounded-lg border border-zinc-850 bg-zinc-900/30 text-zinc-600 cursor-not-allowed font-mono text-xs"
+                    >
+                      <ExternalLink className="w-3.5 h-3.5" />
+                      Demo
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
@@ -231,11 +263,30 @@ export default function ProjectsSection() {
                 href={selectedProject.githubUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg font-mono text-xs font-semibold text-zinc-950 bg-brand-emerald hover:bg-brand-emerald/90 transition-colors"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg font-mono text-xs font-semibold text-zinc-450 border border-zinc-800 hover:border-zinc-700 hover:text-white transition-colors"
               >
                 <Github className="w-4 h-4" />
-                Go to GitHub
+                GitHub
               </a>
+              {selectedProject.demoUrl ? (
+                <a
+                  href={selectedProject.demoUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg font-mono text-xs font-semibold text-zinc-950 bg-brand-emerald hover:bg-brand-emerald/90 transition-colors animate-pulse"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  Live Demo
+                </a>
+              ) : (
+                <button
+                  disabled
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg font-mono text-xs font-semibold border border-zinc-850 bg-zinc-900/40 text-zinc-650 cursor-not-allowed"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  Live Demo
+                </button>
+              )}
             </div>
           </div>
         </div>
