@@ -5,7 +5,7 @@ import { Mail, Linkedin, Github, BookOpen, Copy, Check, Send } from "lucide-reac
 
 export default function ContactSection() {
   const [copied, setCopied] = useState(false);
-  const emailAddress = "[EMAIL_ADDRESS]";
+  const emailAddress = "shidqi.ramadhandy@gmail.com";
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(emailAddress);
