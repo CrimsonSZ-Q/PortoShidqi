@@ -56,6 +56,18 @@ export default function ProjectsSection() {
       githubUrl: "https://github.com/CrimsonSZ-Q/KebabArdogaWeb",
       demoUrl: "https://crimsonsz-q.github.io/KebabArdogaWeb/",
     },
+    {
+      id: 4,
+      title: "Wedding Web",
+      category: "Web Application",
+      problem: "Need website for Wedding Invitation.",
+      solution: "Create website for My Wedding.",
+      impact: "Successfully created a website for Wedding Invitation.",
+      architecture: "Website for Wedding Invitation.",
+      tags: ["Node.js", "Next.JS", "CSS", "Typescript"],
+      githubUrl: "https://github.com/CrimsonSZ-Q/WeddingShidqiHesti",
+      demoUrl: "https://wedding-shidqi-hesti.vercel.app/invite/dGVzdA",
+    },
   ];
 
   const filteredProjects = projects.filter(
